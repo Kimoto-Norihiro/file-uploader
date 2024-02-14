@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package fileservice;
+
+message File {
+	string id = 1;
+	string base64pptx = 2;
+	string base64pdf = 3;
+}
+
+message CreateFileRequest {
+	File file = 1;
+}
+
+message CreateFileResponse {
+	string id = 1;
+}
+
+message GetFileRequest {
+	string id = 1;
+}
+
+message GetFileResponse {
+	File file = 1;
+}
+
+service FileService {
+	rpc CreateFile(CreateFileRequest) returns (CreateFileResponse);
+	rpc GetFile(GetFileRequest) returns (GetFileResponse);
+}

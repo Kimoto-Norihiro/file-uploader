@@ -1,0 +1,20 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/Kimoto-Norihiro/connect-todo/server/api
+plugins:
+  - plugin: go
+    out: ../backend/api
+    opt: paths=source_relative
+  - plugin: connect-go
+    out: ../backend/api
+    opt: paths=source_relative
+  - plugin: es
+    path: ../frontend/node_modules/.bin/protoc-gen-es
+    out: ../frontend/src/api
+    opt: target=ts
+  - plugin: connect-web
+    path: ../frontend/node_modules/.bin/protoc-gen-connect-web
+    out: ../frontend/src/api
+    opt: target=ts
