@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package fileservice;
+package fileservice.v1;
 
 message File {
 	string id = 1;
