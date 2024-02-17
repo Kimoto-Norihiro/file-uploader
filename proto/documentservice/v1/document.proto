@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package documentservice.v1;
+
+message Document {
+	string id = 1;
+	string base64pptx = 2;
+	string base64pdf = 3;
+}
+
+message CreateDocumentRequest {
+	Document document = 1;
+}
+
+message CreateDocumentResponse {
+	string id = 1;
+}
+
+message GetDocumentRequest {
+	string id = 1;
+}
+
+message GetDocumentResponse {
+	Document document = 1;
+}
+
+service DocumentService {
+	rpc CreateDocument(CreateDocumentRequest) returns (CreateDocumentResponse);
+	rpc GetDocument(GetDocumentRequest) returns (GetDocumentResponse);
+}
