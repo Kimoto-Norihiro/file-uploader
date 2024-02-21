@@ -3,7 +3,9 @@ module github.com/Kimoto-Norihiro/file-uploader
 go 1.21.7
 
 require (
+	github.com/bufbuild/connect-go v1.10.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/rs/cors v1.10.1 // indirect
 	golang.org/x/net v0.21.0 // indirect
 	golang.org/x/sys v0.17.0 // indirect
 	golang.org/x/text v0.14.0 // indirect

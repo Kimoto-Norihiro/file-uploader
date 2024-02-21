@@ -2,7 +2,7 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: github.com/Kimoto-Norihiro/file-uploader/server/api
+    default: github.com/Kimoto-Norihiro/file-uploader/backend/api
 plugins:
   - plugin: buf.build/protocolbuffers/go
     out: ../backend/api

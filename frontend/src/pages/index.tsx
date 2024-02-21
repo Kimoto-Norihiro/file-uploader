@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "../App.css"
+import { CreateDocument } from '../handler/document_handler'
 
 function Home() {
   const [filePPTX, setFilePPTX] = useState<File | null>(null)
@@ -72,20 +73,6 @@ function Home() {
     return new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' })
   }
 
-  const handleSubmit = async () => {
-    const filePPTXBase64 = filePPTX ? await fileToBase64(filePPTX) : null
-    const filePDFBase64 = filePDF ? await fileToBase64(filePDF) : null
-
-    console.log(filePPTXBase64)
-    console.log(filePDFBase64)
-
-    setBase64PPTX(filePPTXBase64 as string)
-    setBase64PDF(filePDFBase64 as string)
-
-    // const res = await CreateFile(filePDFBase64 as string, filePPTXBase64 as string)
-    // console.log(res)
-  }
-
   const encode = async () => {
     const filePPTXBase64 = filePPTX ? await fileToBase64(filePPTX) : null
     const filePDFBase64 = filePDF ? await fileToBase64(filePDF) : null
@@ -116,9 +103,19 @@ function Home() {
           <input type="file" accept='.pptx' onChange={handleFilePPTX} />
           <input type="file" accept='.pdf' onChange={handleFilePDF} />
         </div>
-        <button type="submit" onSubmit={(e) => {
+        <button type="button" onClick={async (e) => {
           e.preventDefault()
-          handleSubmit()
+          const filePPTXBase64 = filePPTX ? await fileToBase64(filePPTX) : null
+          const filePDFBase64 = filePDF ? await fileToBase64(filePDF) : null
+
+          console.log(filePPTXBase64)
+          console.log(filePDFBase64)
+
+          setBase64PPTX(filePPTXBase64 as string)
+          setBase64PDF(filePDFBase64 as string)
+
+          const res = await CreateDocument(base64PDF as string, base64PPTX as string)
+          console.log(res)
         }}>送信</button>
       </form>
       <button onClick={encode}>encode</button>

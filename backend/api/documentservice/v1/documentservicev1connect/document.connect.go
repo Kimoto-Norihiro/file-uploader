@@ -7,7 +7,7 @@ package documentservicev1connect
 import (
 	context "context"
 	errors "errors"
-	v1 "github.com/Kimoto-Norihiro/file-uploader/server/api/documentservice/v1"
+	v1 "github.com/Kimoto-Norihiro/file-uploader/api/documentservice/v1"
 	connect_go "github.com/bufbuild/connect-go"
 	http "net/http"
 	strings "strings"
